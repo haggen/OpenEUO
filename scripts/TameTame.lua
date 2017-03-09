@@ -12,8 +12,9 @@ dofile(".\\Library.lua")
 local TAMABLES = {
     213, -- Polar Bear
     233, -- Bull
-    34,  -- White Wolf
-    65,  -- Snow Leopard
+    034, -- White Wolf
+    221, -- Walrus
+    065, -- Snow Leopard
 }
 
 local TameTame = {
