@@ -94,7 +94,7 @@ end
 
 function TameTame:Release()
     wait(250)
-    UO.RenamePet(id, "pet")
+    UO.RenamePet(self.target.id, "pet")
     wait(250)
     UO.Macro(1, 0, "pet release")
     WaitFor("UO.ContSizeX == 270 and UO.ContSizeY == 120", 1000)
