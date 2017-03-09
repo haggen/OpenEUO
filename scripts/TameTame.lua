@@ -3,6 +3,8 @@
 -- More on https://github.com/haggen/openeuo
 --
 -- Roadmap:
+-- * Complete tamables table.
+-- * Select tamables for character's skill level.
 -- * Handle world saves.
 -- * Handle attackers.
 --
