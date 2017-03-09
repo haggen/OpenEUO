@@ -1,0 +1,61 @@
+Table: UO
+File : uo.dll
+Desc : Provides access to Ultima Online clients
+-----------------------------------------------
+
+
+Supported Variables:
+--------------------
+
+
+AR, BackpackID, CharDir, CharID, CharName, CharPosX, CharPosY, CharPosZ, CharStatus, CharType, CliCnt, CliLang, CliLeft, CliLogged, CliNr, CliTop, CliVer, CliXRes, CliYRes, ContID, ContKind, ContName, ContPosX, ContPosY, ContSizeX, ContSizeY, ContType, CR, CursKind, CursorX, CursorY, Dex, EnemyHits, EnemyID, ER, Followers, FR, Gold, Hits, Int, LHandID, LLiftedID, LLiftedKind, LLiftedType, LObjectID, LObjectType, LShard, LSkill, LSpell, LTargetID, LTargetKind, LTargetTile, LTargetX, LTargetY, LTargetZ, Luck, Mana, MaxDmg, MaxFol, MaxHits, MaxMana, MaxStam, MaxStats, MaxWeight, MinDmg, NextCPosX, NextCPosY, PR, RHandID, Sex, Shard, Stamina, Str, SysMsg, TargCurs, TP, Weight
+
+
+Supported Commands:
+-------------------
+
+
+Click(nX,nY,bLeft,bDown,bUp,bMC)
+CloseClient()
+ContTop(nIndex)
+nCnt = FilterItems(nType[,nValue])
+sName,nX,nY,nSX,nSY,nKind,nID,nType,nHP = GetCont(nIndex)
+nID,nType,nKind,nContID,nX,nY,nZ,nStack,nRep,nCol = GetItem(nIndex)
+sLine,nCol = GetJournal(nIndex)
+nPix = GetPix(nX,nY)
+nNorm,nReal,nCap,nLock = GetSkill(sSkill)
+HideItem(nID)
+IgnoreCont(sName|nKind|0)
+Key(sKey[,bCtrl,bAlt,bShift])
+bSuccess = Move(nX,nY[,nAcc[,nTimeout]])
+Msg(sStr)
+bSuccess = OpenClient(bSwitchTo)
+nCnt = ScanItems([bVisibleOnly])
+nNewRef,nCnt = ScanJournal(nOldRef)
+nCnt = TileCnt(nX,nY[,nFacet])
+nType,nZ,sName,nFlags = TileGet(nX,nY,nIndex[,nFacet])
+bSuccess = TileInit([bNoOverrides])
+bRes,nPos,nCnt,nID,nType,nMax,nPrice,sName = GetShop()
+bRes = SetShop(nID,nNum)
+
+
+Supported Events:
+-----------------
+
+
+CliDrag(nID)
+Drag(nID[,nAmount])
+DropC(nContID[,nX,nY])
+DropG(nX,nY[,nZ])
+DropPD()
+ExMsg(nID[,nFont,nColor],sMsg)
+Equip([nID][,nID][,...])
+Macro(nPar1,nPar2[,sStr])
+Pathfind(nX,nY[,nZ])
+Popup(nID[,nX,nY])
+sName,sInfo = Property(nID)
+RenamePet(nID,sName)
+SkillLock(sSkill,nLock)
+StatBar(nID)
+StatLock(sStat,nLock)
+SysMessage(sMsg[,nCol])

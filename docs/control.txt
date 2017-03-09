@@ -1,0 +1,36 @@
+Table: Ctrl
+File : OpenEUO.exe
+Desc : Privileged functions for thread control
+       (only available to GUI instance!)
+----------------------------------------------
+
+
+Supported Commands:
+-------------------
+
+
+i = Open()
+Close(i)
+Reset(i)
+
+n = GetCount()
+s = GetOutput(i)
+n = GetLine(i)
+s = GetLocation(i)
+n = GetState(i)
+
+s = GetScript(i)
+s = GetPrefix(i)
+s = GetName(i)
+n = GetControl(i)
+SetScript(i,s)
+SetPrefix(i,s)
+SetName(i,s)
+SetControl(i,n)
+
+Lock(i)
+Unlock(i)
+b = IsLocked(i)
+SetHandler(f)
+
+bSuccess = Execute(sApp,sPar)

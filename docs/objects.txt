@@ -1,0 +1,473 @@
+Table: Obj
+File : objects.dll
+Desc : Provides access to Delphi's VCL and other objects
+--------------------------------------------------------
+
+
+Supported Commands:
+-------------------
+
+
+tObject = Create(nClassName)
+Free(tObject)
+Loop()
+Exit()
+
+
+Supported Objects:
+------------------
+
+
+RO: read-only property   RW: read-write property 
+ME: method               EV: event 
+b : boolean              n : number 
+s : string               (): object 
+[]: object or nil 
+
+*: property should (but is not guaranteed to) exist in all subclasses 
+**: object cannot be created directly, it is used as ancestor or part of another class
+
+
+TJpeg (TObject/TGraphic) 
+  ReadFrom               ME (TBitmap)
+  WriteTo                ME (TBitmap)
+
+TBitmap (TObject/TGraphic) 
+  Canvas                 RO (TCanvas)
+  PixelFormat            RW n
+  Transparent            RW b
+  TransparentColor       RW n
+
+TIcon (TObject/TGraphic) 
+
+TGraphic ** (TObject) 
+  Data                   RW s
+  Empty                  RO b
+  Height                 RW n
+  Width                  RW n
+
+TImage (TObject/TComponent/TControl) 
+  AutoSize               RW b
+  Center                 RW b
+  Graphic                RW [TGraphic]
+  Proportional           RW b
+  Stretch                RW b
+  Transparent            RW b
+
+TStatusBar (TObject/TComponent/TControl/TWinControl) 
+  Count                  RO n
+  Delete                 ME n
+  GetPanel               ME n
+  Insert                 ME n(TStatusPanel)
+  SimplePanel            RW b
+  SimpleText             RW s
+  SizeGrip               RW b
+
+TStatusPanel (TObject) 
+  Alignment              RW n
+  Bevel                  RW n
+  Text                   RW s
+  Width                  RW n
+
+TMessageBox (TObject) 
+  Button                 RW n
+  Default                RW n
+  Handle                 RW n
+  Icon                   RW n
+  Show                   ME s
+  Title                  RW s
+
+TSynTerm (TObject/TComponent/TControl/TWinControl) 
+  BorderStyle            RW n
+  Clear                  ME 
+  Line                   RO s
+  OnChange               EV 
+  Prompt                 ME s
+  ScrollBars             RW n
+  TabWidth               RW n
+  Write                  ME s
+
+TToolButton (TObject/TComponent/TControl) 
+  AllowAllUp             RW b
+  Caption                RW s
+  Down                   RW b
+  DropDownMenu           RW [TPopupMenu]
+  Grouped                RW b
+  ImageIndex             RW n
+  Indeterminate          RW b
+  MenuItem               RW [TMenuItem]
+  Style                  RW n
+
+TToolBar (TObject/TComponent/TControl/TWinControl) 
+  ButtonCount            RO n
+  ButtonHeight           RW n
+  ButtonWidth            RW n
+  DisabledImages         RW [TImageList]
+  EdgeBorders            RW n
+  EdgeInner              RW n
+  EdgeOuter              RW n
+  Flat                   RW b
+  GetButton              ME n
+  HotImages              RW [TImageList]
+  Images                 RW [TImageList]
+  ShowCaptions           RW b
+  Transparent            RW b
+
+TImageList (TObject/TComponent) 
+  Count                  RO n
+  Delete                 ME n
+  Insert                 ME n(TGraphic)
+
+TSynMemo (TObject/TComponent/TControl/TWinControl) 
+  ActiveLineColor        RW n
+  BorderStyle            RW n
+  CanUndo                RO b
+  CaretX                 RW n
+  CaretY                 RW n
+  Clear                  ME 
+  ClearSelection         ME 
+  CopyToClipboard        ME 
+  CutToClipboard         ME 
+  HideSelection          RW b
+  InvalidateLine         ME n
+  Lines                  RO (TStrings)
+  Modified               RW b
+  OnChange               EV 
+  OnSpecialLineColors    EV 
+  Options                RW n
+  PasteFromClipboard     ME 
+  ReadOnly               RW b
+  RightEdge              RW n
+  RightEdgeColor         RW n
+  ScrollBars             RW n
+  SelEnd                 RW n
+  SelLength              RW n
+  SelStart               RW n
+  SelText                RW s
+  SelectAll              ME 
+  TabWidth               RW n
+  Text                   RW s
+  Undo                   ME 
+  WantReturns            RW b
+  WantTabs               RW b
+  WordWrap               RW b
+
+TTabControl (TObject/TComponent/TControl/TWinControl) 
+  HotTrack               RW b
+  Images                 RW [TImageList]
+  MultiLine              RW b
+  OnChange               EV 
+  ScrollTabs             ME n
+  Style                  RW n
+  TabHeight              RW n
+  TabIndex               RW n
+  TabPosition            RW n
+  Tabs                   RO (TStrings)
+  TabWidth               RW n
+
+TOpenDialog/TSaveDialog (TObject/TComponent) 
+  DefaultExt             RW s
+  Execute                ME 
+  FileName               RW s
+  Files                  RO (TStrings)
+  Filter                 RW s
+  FilterIndex            RW n
+  InitialDir             RW s
+  Options                RW n
+  Title                  RW s
+
+TCanvas ** (TObject) 
+  Brush                  RO (TBrush)
+  Draw                   ME nnn[TGraphic]
+  Ellipse                ME nnnn
+  FloodFill              ME nnnn
+  Font                   RO (TFont)
+  GetPixel               ME nn
+  Line                   ME nnnn
+  Pen                    RO (TPen)
+  Rectangle              ME nnnn
+  SetPixel               ME nnn
+  Text                   ME nns
+
+TPen ** (TObject) 
+  Color                  RW n
+  Style                  RW n
+  Width                  RW n
+
+TBrush ** (TObject) 
+  Color                  RW n
+  Style                  RW n
+
+TPaintBox (TObject/TComponent/TControl) 
+  Canvas                 RO (TCanvas)
+  OnPaint                EV 
+
+TSplitter (TObject/TComponent/TControl) 
+  AutoSnap               RW b
+  Beveled                RW b
+  MinSize                RW n
+  ResizeStyle            RW n
+
+TBevel (TObject/TComponent/TControl) 
+  Shape                  RW n
+  Style                  RW n
+
+TScrollBar (TObject/TComponent/TControl/TWinControl) 
+  Kind                   RW n
+  LargeChange            RW n
+  Max                    RW n
+  Min                    RW n
+  OnChange               EV 
+  PageSize               RW n
+  Position               RW n
+  SmallChange            RW n
+
+TPopupMenu (TObject/TComponent) 
+  Images                 RW [TImageList]
+  Items                  RO (TMenuItem)
+  OnPopup                EV 
+
+TMainMenu (TObject/TComponent) 
+  Images                 RW [TImageList]
+  Items                  RO (TMenuItem)
+
+TMenuItem (TObject/TComponent) 
+  Add                    ME (TMenuItem)
+  AutoCheck              RW b
+  Break                  RW n
+  Caption                RW s
+  Checked                RW b
+  Clear                  ME 
+  Click                  ME 
+  Count                  RO n
+  Delete                 ME n
+  Enabled                RW b
+  Find                   ME s
+  GetItem                ME n
+  GroupIndex             RW n
+  Hint                   RW s
+  ImageIndex             RW n
+  IndexOf                ME (TMenuItem)
+  Insert                 ME n(TMenuItem)
+  OnClick                EV 
+  Parent                 RO [TMenuItem]
+  RadioItem              RW b
+  ShortCut               RW n
+  Visible                RW b
+
+TComboBox (TObject/TComponent/TControl/TWinControl) 
+  AutoCloseUp            RW b
+  AutoComplete           RW b
+  AutoDropDown           RW b
+  BevelEdges             RW n
+  BevelInner             RW n
+  BevelKind              RW n
+  BevelOuter             RW n
+  Clear                  ME 
+  ClearSelection         ME 
+  DropDownCount          RW n
+  DroppedDown            RW b
+  ItemIndex              RW n
+  Items                  RO (TStrings)
+  MaxLength              RW n
+  OnChange               EV 
+  OnSelect               EV 
+  SelLength              RW n
+  SelStart               RW n
+  SelText                RW s
+  SelectAll              ME 
+  Sorted                 RW b
+  Style                  RW n
+  Text                   RW s
+
+TListBox (TObject/TComponent/TControl/TWinControl) 
+  AutoComplete           RW b
+  BevelEdges             RW n
+  BevelInner             RW n
+  BevelKind              RW n
+  BevelOuter             RW n
+  BorderStyle            RW n
+  Clear                  ME 
+  ClearSelection         ME 
+  Columns                RW n
+  Count                  RO n
+  DeleteSelected         ME 
+  ExtendedSelect         RW b
+  GetSelected            ME n
+  ItemIndex              RW n
+  Items                  RO (TStrings)
+  MultiSelect            RW b
+  SelCount               RO n
+  SelectAll              ME 
+  SetSelected            ME nb
+  Sorted                 RW b
+  TopIndex               RW n
+
+TRadioButton (TObject/TComponent/TControl/TWinControl) 
+  Alignment              RW n
+  Caption                RW s
+  Checked                RW b
+
+TCheckBox (TObject/TComponent/TControl/TWinControl) 
+  Alignment              RW n
+  Caption                RW s
+  Checked                RW b
+
+TGroupBox (TObject/TComponent/TControl/TWinControl) 
+  Caption                RW s
+
+TPanel (TObject/TComponent/TControl/TWinControl) 
+  BevelInner             RW n
+  BevelOuter             RW n
+  BevelWidth             RW n
+  BorderStyle            RW n
+  BorderWidth            RW n
+
+TStrings ** (TObject) 
+  Add                    ME s
+  AddStrings             ME (TStrings)
+  Clear                  ME 
+  Count                  RO n
+  Delete                 ME n
+  GetString              ME n
+  Insert                 ME ns
+  SetString              ME ns
+  Text                   RW s
+
+TSizeConstraints ** (TObject) 
+  MaxHeight              RW n
+  MaxWidth               RW n
+  MinHeight              RW n
+  MinWidth               RW n
+
+TFont ** (TObject) 
+  Color                  RW n
+  Height                 RW n
+  Name                   RW s
+  Size                   RW n
+  Style                  RW n
+
+TTimer (TObject/TComponent) 
+  Enabled                RW b
+  Interval               RW n
+  OnTimer                EV 
+
+TLabel (TObject/TComponent/TControl) 
+  Alignment              RW n
+  AutoSize               RW b
+  Caption                RW s
+  FocusControl           RW [TWinControl]
+  Layout                 RW n
+  OnMouseEnter           EV 
+  OnMouseLeave           EV 
+  Transparent            RW b
+  WordWrap               RW b
+
+TForm (TObject/TComponent/TControl/TWinControl) 
+  ActiveControl          RW [TWinControl]
+  AlphaBlend             RW b
+  AlphaBlendValue        RW n
+  BorderIcons            RW n
+  BorderStyle            RW n
+  Canvas                 RO (TCanvas)
+  Caption                RW s
+  Close                  ME 
+  FormStyle              RW n
+  Icon                   RW [TIcon]
+  Menu                   RW [TMainMenu]
+  OnActivate             EV 
+  OnClose                EV 
+  OnPaint                EV 
+  Position               RW n
+  ShowModal              ME 
+  TransparentColor       RW b
+  TransparentColorValue  RW n
+  WindowState            RW n
+
+TButton (TObject/TComponent/TControl/TWinControl) 
+  Caption                RW s
+  Click                  ME 
+  WordWrap               RW b
+
+TMemo (TObject/TComponent/TControl/TWinControl/TCustomEdit) 
+  GetLineFromChar        ME n
+  GetLineIndex           ME n
+  Lines                  RO (TStrings)
+  ScrollBars             RW n
+  Text                   RW s
+  WantReturns            RW b
+  WantTabs               RW b
+  WordWrap               RW b
+
+TEdit (TObject/TComponent/TControl/TWinControl/TCustomEdit) 
+  AutoSelect             RW b
+  PasswordChar           RW s
+
+TCustomEdit ** (TObject/TComponent/TControl/TWinControl) 
+  BevelEdges           * RW n
+  BevelInner           * RW n
+  BevelKind            * RW n
+  BevelOuter           * RW n
+  BorderStyle          * RW n
+  CanUndo                RO b
+  Clear                  ME 
+  ClearSelection         ME 
+  CopyToClipboard        ME 
+  CutToClipboard         ME 
+  HideSelection        * RW b
+  MaxLength            * RW n
+  Modified               RW b
+  OnChange             * EV 
+  PasteFromClipboard     ME 
+  ReadOnly             * RW b
+  SelLength              RW n
+  SelStart               RW n
+  SelText                RW s
+  SelectAll              ME 
+  Text                 * RW s
+  Undo                   ME 
+
+TWinControl ** (TObject/TComponent/TControl) 
+  CanFocus               RO b
+  Focused                RO b
+  Handle                 RO n
+  OnEnter              * EV 
+  OnExit               * EV 
+  SetFocus               ME 
+  TabOrder             * RW n
+  TabStop              * RW b
+
+TControl ** (TObject/TComponent) 
+  Align                  RW n
+  Anchors              * RW n
+  BringToFront           ME 
+  ClientHeight           RW n
+  ClientToScreen         ME nn
+  ClientWidth            RW n
+  Color                * RW n
+  Constraints          * RO (TSizeConstraints)
+  Cursor                 RW n
+  Enabled              * RW b
+  Font                 * RO (TFont)
+  Height                 RW n
+  Hide                   ME 
+  Hint                   RW s
+  Left                   RW n
+  OnClick              * EV 
+  OnDblClick           * EV 
+  Parent                 RW [TWinControl]
+  PopupMenu            * RW [TPopupMenu]
+  ScreenToClient         ME nn
+  SendToBack             ME 
+  Show                   ME 
+  ShowHint             * RW b
+  Top                    RW n
+  Visible              * RW b
+  Width                  RW n
+
+TComponent ** (TObject) 
+  Name                   RW s
+  Tag                    RW n
+
+TObject ** 
+  ClassName              RO s

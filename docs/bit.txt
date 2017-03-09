@@ -1,0 +1,16 @@
+Table: Bit
+File : OpenEUO.exe
+Desc : Provides support for bitwise operations
+----------------------------------------------
+
+
+Supported Commands:
+-------------------
+
+
+n = Not(n)
+n = And(n,n,...)
+n = Or(n,n,...)
+n = Xor(n,n,...)
+n = Shl(n,n)
+n = Shr(n,n)

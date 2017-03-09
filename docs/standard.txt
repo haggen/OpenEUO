@@ -1,0 +1,42 @@
+Table: _G
+File : OpenEUO.exe
+Desc : General purpose functions
+--------------------------------
+
+
+Supported Lua Libraries:
+------------------------
+
+
+base      (complete except: xpcall, load)
+table     (complete)
+string    (complete)
+math      (complete)
+coroutine (complete)
+
+NOT SUPPORTED: package, io, os, debug
+
+
+Supported Commands:
+-------------------
+
+
+nYear,nMonth,nDay,nDayOfWeek = getdate()
+bPressed = getkey(sKey)
+nX,nY = getmouse()
+nTicks = getticks()
+nHour,nMinute,nSecond,nMillisec = gettime()
+
+dostring(sSnippet[,sName])
+tFile = openfile(sName,sMode)
+sDir = getbasedir()
+sDir = getinstalldir()
+
+pause()
+stop()
+wait(nMSec)
+
+bSuccess = cmpsetatom(sName,expectedvalue,newvalue)
+value = getatom(sName)
+tNames = listatoms(sPartialName)
+setatom(sName,value)
