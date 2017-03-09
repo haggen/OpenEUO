@@ -15,18 +15,26 @@ function table.find(t, value)
     end
 end
 
-local IGNORED = {}
+local ignored = {}
 
-function Find(query)
+function Find(query, ...)
     local time = getticks()
 
     local match
     if type(query) == "number" then
-        match = function(item) return item.id == query or item.type == query end
+        match = function(item)
+            return item.id == query or item.type == query
+        end
     elseif type(query) == "table" then
-        match = function(item) return table.find(query, item.id) or table.find(query, item.type) end
+        match = function(item)
+            return table.find(query, item.id) or table.find(query, item.type)
+        end
     elseif type(query) == "string" then
-        match = function(item) return dostring(query) end
+        match = function(item)
+            local fn = loadstring("return "..string.format(query, unpack(arg)))
+            setfenv(fn, item)
+            return fn()
+        end
     elseif type(query) == "function" then
         match = query
     else
@@ -54,7 +62,7 @@ function Find(query)
 end
 
 function Ignore(id)
-    table.insert(IGNORED, id)
+    table.insert(ignored, id)
 end
 
 function WaitFor(query, timeout)
