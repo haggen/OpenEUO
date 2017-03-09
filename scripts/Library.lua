@@ -120,4 +120,8 @@ function MoveTo(query, tolerance, timeout)
     end
 end
 
+function Use(id)
+    UO.LObjectID = id
+    UO.Macro(17, 0)
+end
 end
