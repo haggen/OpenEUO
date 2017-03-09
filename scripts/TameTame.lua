@@ -3,6 +3,7 @@
 -- More on https://github.com/haggen/openeuo
 --
 -- Roadmap:
+-- * Target closest animals first.
 -- * Complete tamables table.
 -- * Select tamables for character's skill level.
 -- * Handle world saves.
