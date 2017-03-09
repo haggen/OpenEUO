@@ -120,9 +120,4 @@ function MoveTo(query, tolerance, timeout)
     end
 end
 
-function ReleasePet(id)
-    UO.RenamePet(id, "pet")
-    UO.Macro(1, 0, "pet release")
-    WaitFor("UO.ContSizeX == 270 and UO.ContSizeY == 120", 1000)
-    UO.Click(UO.ContPosX + 30, UO.ContPosY + 90, true, true, true, false)
 end
