@@ -54,7 +54,8 @@ function Find(query, ...)
         item.stack,
         item.rep,
         item.color = UO.GetItem(i)
-        if not table.find(IGNORED, item.id) and match(item) then
+        item.distance = Distance(UO.CharPosX, UO.CharPosY, item.x, item.y)
+        if not table.find(ignored, item.id) and match(item) then
             return item
         end
     end
