@@ -124,4 +124,20 @@ function Use(id)
     UO.LObjectID = id
     UO.Macro(17, 0)
 end
+
+local announcements = {}
+
+function Announce(message, interval)
+    local time = getticks()
+    local t = {}
+    for message, expiration in pairs(announcements) do
+        if expiration > time then
+            t[message] = expiration
+        end
+    end
+    if not t[message] then
+        UO.SysMessage(message)
+        t[message] = time + interval
+    end
+    announcements = t
 end
