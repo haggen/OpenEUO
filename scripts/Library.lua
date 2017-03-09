@@ -89,12 +89,16 @@ function Target(id, kind)
     wait(1000)
 end
 
-function Distance(query)
+function Distance(x1, y1, x2, y2)
+    return math.max(math.abs(x1 - x2), math.abs(y1 - y2))
+end
+
+function InRange(query, range)
     local item = Find(query)
     if item == nil then
-        print("Distance: query result is empty")
+        print("InRange: query result is empty")
     else
-        return math.max(math.abs(UO.CharPosX - item.x), math.abs(UO.CharPosY - item.y))
+        return Distance(UO.CharPosX, UO.CharPosY, item.x, item.y) <= range
     end
 end
 
