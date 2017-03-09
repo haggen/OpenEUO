@@ -76,6 +76,11 @@ function WaitForTarget(timeout)
     WaitFor("not UO.TargCurs", timeout or 10000)
 end
 
+function PromptTarget()
+    UO.TargCurs = true
+    WaitForTarget()
+end
+
 function Target(id, kind)
     WaitForTargCurs()
     UO.LTargetID = id
