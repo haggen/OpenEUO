@@ -4,7 +4,7 @@
 --
 -- Roadmap:
 -- * Handle world saves.
--- * Minimize crashes.
+-- * Handle attackers.
 --
 
 dofile(".\\Library.lua")
